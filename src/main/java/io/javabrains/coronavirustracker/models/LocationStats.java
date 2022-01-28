@@ -9,7 +9,7 @@ public class LocationStats {
 	@GeneratedValue
 	private int id;
     
-	private String Updated_On;
+	private String updated_On;
 	private String state;
     private String Total_Doses_Administered;
     private String Total_Sessions_Conducted;
@@ -41,7 +41,7 @@ public class LocationStats {
 			String total_Individuals_Vaccinated) {
 		super();
 		this.id = id;
-		Updated_On = updated_On;
+		this.updated_On = updated_On;
 		this.state = state;
 		Total_Doses_Administered = total_Doses_Administered;
 		Total_Sessions_Conducted = total_Sessions_Conducted;
@@ -70,11 +70,11 @@ public class LocationStats {
 	}
 
 	public String getUpdated_On() {
-		return Updated_On;
+		return updated_On;
 	}
 
 	public void setUpdated_On(String updated_On) {
-		Updated_On = updated_On;
+		this.updated_On = updated_On;
 	}
 
 	public String getState() {

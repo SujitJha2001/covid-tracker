@@ -25,28 +25,43 @@ public class HomeController {
 	
 	@Autowired
 	private LocationStatsRepo locationStatsRepo; 
-	@GetMapping
+	@GetMapping("fetch")
 	public List<LocationStats> getAllStats()
 	{
 		return locationStatsRepo.findAll();
 	}
 	
 	// build create employee REST API
-    @PostMapping
+    @PostMapping("state")
     public LocationStats createEmployee(@RequestBody LocationStats locationStats) {
         return locationStatsRepo.save(locationStats);
     }
-	
-	/*@RequestMapping(path="save")
-	public void setDatainDB()
-	{
-		cvds.saveCoronavirusData();
-	}*/
+
 	
 	//build get status by state REST API
     @GetMapping("{id}")
-    public List<LocationStats> getEmployeeById(@PathVariable("id") String state){
-    	return locationStatsRepo.findByState(state);
+    public String getEmployeeById(@PathVariable("id") String state){
+    	List<LocationStats> l = locationStatsRepo.findByState(state);
+    	return l.get(0).getTotal_Individuals_Vaccinated();
+    }
+    
+    @GetMapping("{id1}/wastage/{id2}")
+    public Integer getEmployeeById(@PathVariable("id1") String state,@PathVariable("id2") String date)
+    {
+    	List<LocationStats> l = locationStatsRepo.findByState(state);
+    	String newdate = date.replace('-', '/');
+    	for(LocationStats locationStats : l)
+    	{
+    		if(locationStats.getUpdated_On().equals(newdate))
+    		{
+    			Integer total_dose_admin=Integer.parseInt(locationStats.getTotal_Doses_Administered());
+    			Integer first_dose_admin=Integer.parseInt(locationStats.getFirst_Dose_Administered());
+    			Integer second_dose_admin=Integer.parseInt(locationStats.getSecond_Dose_Administered());
+    			System.out.println(first_dose_admin+" "+second_dose_admin+" "+total_dose_admin);
+    			return first_dose_admin+second_dose_admin-total_dose_admin;
+    		}
+    	}
+    	return 0;
     }
 	
 }
