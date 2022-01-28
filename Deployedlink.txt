@@ -1,0 +1,8 @@
+Deployed On HEROKU - https://corona-virus-tracker2.herokuapp.com/
+---------------------------------------------------------------------------------------------------------------------------------------------
+For /fetch - https://corona-virus-tracker2.herokuapp.com/fetch
+For /state [GET] : https://corona-virus-tracker2.herokuapp.com/Assam
+For /state/wastage/date - https://corona-virus-tracker2.herokuapp.com/Assam/wastage/1-02-2021
+For post method - https://corona-virus-tracker2.herokuapp.com/state [IN POST]
+-------------------------------------------------------------------------------------------------------------------------------------------
+Github Link - https://github.com/SujitJha2001/covid-tracker
